@@ -1,0 +1,41 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+div.container {
+  margin-top: 30px;
+}
+
+#select_img {
+  width: 400px;
+  border-radius: 10px;
+}
+
+#select_heading {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+img.select_rating {
+  max-width: 30px;
+}
+
+img.img-flag {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+#select_photo_1, #select_photo_2 {
+  width: 400px;
+}
+
+#select_review {
+  margin-left: 20px;
+}
+

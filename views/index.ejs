@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Yelp Search</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Search Term in Yelp</h1>
+    <p>Welcome</p>
+    <select id="yelpAuto" class="form-control input-xlarge">
+      <option></option>
+    </select>
+    <div class="container">
+      <div class="media">
+        <div class="media-left">
+          <a href="#">
+            <img class="media-object" src="/images/loadings/jar-loading.gif" alt="restaurant_img" id="select_img">
+          </a>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading" id="select_heading">Media heading</h4>
+          <table class="table table-striped">
+            <tr>
+              <td>Address:</td>
+              <td id="select_address"></td>
+            </tr>
+            <tr>
+              <td>Rating:</td>
+              <td>
+                <img src="/images/review_stars/iOS/10X10_0@3x.png" alt="" class="select_rating select_rating_1">
+                <img src="/images/review_stars/iOS/10X10_0@3x.png" alt="" class="select_rating select_rating_2">
+                <img src="/images/review_stars/iOS/10X10_0@3x.png" alt="" class="select_rating select_rating_3">
+                <img src="/images/review_stars/iOS/10X10_0@3x.png" alt="" class="select_rating select_rating_4">
+                <img src="/images/review_stars/iOS/10X10_0@3x.png" alt="" class="select_rating select_rating_5">
+                <a href=""><span id="select_review"></span></a>
+              </td>
+            </tr>
+            <tr>
+              <td>Price:</td>
+              <td id="select_price"></td>
+            </tr>
+          </table>
+          <div class="row">
+            <div class="col-xs-9 col-md-5">
+              <a href="#" class="thumbnail">
+                <img src="" alt="photo1" id="select_photo_1">
+              </a>
+            </div>
+            <div class="col-xs-9 col-md-5">
+              <a href="#" class="thumbnail">
+                <img src="" alt="photo2" id="select_photo_2">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <script type="text/javascript" src="/javascripts/main.js"></script>
+</html>
