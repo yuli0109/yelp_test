@@ -28,10 +28,14 @@ $("#yelpAuto").select2({
   templateResult: formatState
 });
 
+function overEve (evt){
+  console.log($(evt).attr("data-this"));
+}
+
 function formatState (business) {
   if (!business.img_url) {return $(`<span><img src="/images/loadings/progress-loading.gif" class="img-flag" />${business.text}</span>`)}
   var $business = $(
-    `<span class="restaurant_hov"><img src="${business.img_url}" class="img-flag" />${business.text}</span>`
+    `<span data-this="${business.id}" class="restaurant_hov" onmouseover="overEve(this)"><img src="${business.img_url}" class="img-flag" />${business.text}</span>`
   );
   return $business;
 };
@@ -91,8 +95,6 @@ $("#yelpAuto").on("change",function(event) {
     $("#select_photo_3").attr("src", data.photos[2]);
     $("#select_review").text(`${data.review_count} Reviews`).closest('a').attr("href", data.url);
 
-    // myLatLng = {lat: data.coordinates.latitude, lng: data.coordinates.longitude};
-
   })
 });
 
@@ -121,4 +123,5 @@ function initMap() {
       marker.setPosition(myLatLng);
     });
   });
+
 }
