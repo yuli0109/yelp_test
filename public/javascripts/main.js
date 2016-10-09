@@ -1,4 +1,7 @@
 console.log('ready to server!')
+
+var myLatLng = {lat: 34.0484675, lng: -118.2402491};
+
 $.fn.select2.defaults.set("theme", "classic");
 $("#yelpAuto").select2({
   ajax: {
@@ -28,7 +31,7 @@ $("#yelpAuto").select2({
 function formatState (business) {
   if (!business.img_url) {return $(`<span><img src="/images/loadings/progress-loading.gif" class="img-flag" />${business.text}</span>`)}
   var $business = $(
-    `<span><img src="${business.img_url}" class="img-flag" />${business.text}</span>`
+    `<span class="restaurant_hov"><img src="${business.img_url}" class="img-flag" />${business.text}</span>`
   );
   return $business;
 };
@@ -43,7 +46,7 @@ $("#yelpAuto").on("change",function(event) {
   })
   .done(function(data) {
     console.log("success");
-    $("#select_img").attr("src", data.image_url);
+    // $("#select_img").attr("src", data.image_url);
     $("#select_heading").text(data.name);
     $("#select_address").text(`${data.location.address1}, ${data.location.city}, ${data.location.state}${data.location.zip_code}`);
     switch (data.rating) {
@@ -73,6 +76,7 @@ $("#yelpAuto").on("change",function(event) {
         break;
     case 4:
         $(".select_rating_1, .select_rating_2, .select_rating_3, .select_rating_4").attr("src", '/images/review_stars/iOS/10X10_4@3x.png');
+        $(".select_rating_5").attr("src", '/images/review_stars/iOS/10X10_0@3x.png');
         break;
     case 4.5:
         $(".select_rating_1, .select_rating_2, .select_rating_3, .select_rating_4").attr("src", '/images/review_stars/iOS/10X10_4@3x.png');
@@ -82,9 +86,39 @@ $("#yelpAuto").on("change",function(event) {
         $(".select_rating_1, .select_rating_2, .select_rating_3, .select_rating_4, .select_rating_5").attr("src", '/images/review_stars/iOS/10X10_5@3x.png');
     }
     $("#select_price").text(data.price);
-    $("#select_photo_1").attr("src", data.photos[1]);
-    $("#select_photo_2").attr("src", data.photos[2]);
+    $("#select_photo_1").attr("src", data.photos[0]);
+    $("#select_photo_2").attr("src", data.photos[1]);
+    $("#select_photo_3").attr("src", data.photos[2]);
     $("#select_review").text(`${data.review_count} Reviews`).closest('a').attr("href", data.url);
+
+    // myLatLng = {lat: data.coordinates.latitude, lng: data.coordinates.longitude};
 
   })
 });
+
+
+function initMap() {
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+     position: myLatLng,
+     map: map,
+     title: 'Hello World!'
+  });
+
+  $("#yelpAuto").on("change",function(event) {
+    $.ajax({
+      url: '/yelp/business',
+      dataType: 'json',
+      data: {id: $(this).val()}
+    })
+    .done(function(data) {
+      myLatLng = {lat: data.coordinates.latitude, lng: data.coordinates.longitude};
+      marker.setPosition(myLatLng);
+    });
+  });
+}

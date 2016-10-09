@@ -11,9 +11,9 @@ div.container {
   margin-top: 30px;
 }
 
-#select_img {
+div#map {
   width: 400px;
-  border-radius: 10px;
+  height: 400px;
 }
 
 #select_heading {
@@ -31,7 +31,7 @@ img.img-flag {
   margin-right: 10px;
 }
 
-#select_photo_1, #select_photo_2 {
+#select_photo_1, #select_photo_2, #select_photo_3 {
   width: 400px;
 }
 
@@ -39,3 +39,6 @@ img.img-flag {
   margin-left: 20px;
 }
 
+li:hover{
+  font-weight: bold;
+}
