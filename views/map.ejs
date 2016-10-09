@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Maps</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link rel='stylesheet' href='/stylesheets/mapstyle.css' />
+  </head>
+  <body>
+
+    <div class="map-container">
+      <div id="map" style='width: 800px; height: 400px;'></div>
+      <p><em>Click the pin icon to add waypoints. Click and drag to adjust route.</em></p>
+      <div id="right-panel">
+      <div>
+      <b>Start:</b>
+      <select id="start">
+        <option value="Halifax, NS">Halifax, NS</option>
+        <option value="Boston, MA">Boston, MA</option>
+        <option value="New York, NY">New York, NY</option>
+        <option value="Miami, FL">Miami, FL</option>
+      </select>
+      <br>
+      <b>Waypoints:</b> <br>
+      <i>(Ctrl+Click or Cmd+Click for multiple selection)</i> <br>
+      <select multiple id="waypoints">
+        <option value="montreal, quebec">Montreal, QBC</option>
+        <option value="toronto, ont">Toronto, ONT</option>
+        <option value="chicago, il">Chicago</option>
+        <option value="winnipeg, mb">Winnipeg</option>
+        <option value="fargo, nd">Fargo</option>
+        <option value="calgary, ab">Calgary</option>
+        <option value="spokane, wa">Spokane</option>
+      </select>
+      <br>
+      <b>End:</b>
+      <select id="end">
+        <option value="Vancouver, BC">Vancouver, BC</option>
+        <option value="Seattle, WA">Seattle, WA</option>
+        <option value="San Francisco, CA">San Francisco, CA</option>
+        <option value="Los Angeles, CA">Los Angeles, CA</option>
+      </select>
+      <br>
+      <input type="submit" id="submit">
+      </div>
+    <div id="directions-panel"></div>
+    </div>
+  </div>
+
+  </body>
+  <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/javascripts/map.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqjm3cHms7pomkr_KkImS5A5_Nfc5-nzM&callback=initMap&libraries=drawing">
+    </script>
+</html>
