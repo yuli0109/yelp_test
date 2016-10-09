@@ -1,4 +1,7 @@
 console.log('ready to server!')
+
+var myLatLng = {lat: 34.0484675, lng: -118.2402491};
+
 $.fn.select2.defaults.set("theme", "classic");
 $("#yelpAuto").select2({
   ajax: {
@@ -73,6 +76,7 @@ $("#yelpAuto").on("change",function(event) {
         break;
     case 4:
         $(".select_rating_1, .select_rating_2, .select_rating_3, .select_rating_4").attr("src", '/images/review_stars/iOS/10X10_4@3x.png');
+        $(".select_rating_5").attr("src", '/images/review_stars/iOS/10X10_0@3x.png');
         break;
     case 4.5:
         $(".select_rating_1, .select_rating_2, .select_rating_3, .select_rating_4").attr("src", '/images/review_stars/iOS/10X10_4@3x.png');
@@ -87,5 +91,34 @@ $("#yelpAuto").on("change",function(event) {
     $("#select_photo_3").attr("src", data.photos[2]);
     $("#select_review").text(`${data.review_count} Reviews`).closest('a').attr("href", data.url);
 
+    // myLatLng = {lat: data.coordinates.latitude, lng: data.coordinates.longitude};
+
   })
 });
+
+
+function initMap() {
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+     position: myLatLng,
+     map: map,
+     title: 'Hello World!'
+  });
+
+  $("#yelpAuto").on("change",function(event) {
+    $.ajax({
+      url: '/yelp/business',
+      dataType: 'json',
+      data: {id: $(this).val()}
+    })
+    .done(function(data) {
+      myLatLng = {lat: data.coordinates.latitude, lng: data.coordinates.longitude};
+      marker.setPosition(myLatLng);
+    });
+  });
+}
