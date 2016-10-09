@@ -11,4 +11,8 @@ router.get('/yelp/search', YelpFind.businessSearch);
 
 router.get('/yelp/business', YelpFind.businessFind);
 
+router.get('/map', function(req, res, next) {
+  res.render('map');
+})
+
 module.exports = router;
