@@ -102,7 +102,7 @@ $("#yelpAuto").on("change",function(event) {
 function initMap() {
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
+    zoom: 17,
     center: myLatLng
   });
 
@@ -121,6 +121,7 @@ function initMap() {
     .done(function(data) {
       myLatLng = {lat: data.coordinates.latitude, lng: data.coordinates.longitude};
       marker.setPosition(myLatLng);
+      map.setCenter(myLatLng);
     });
   });
 
